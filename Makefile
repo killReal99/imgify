@@ -15,13 +15,13 @@ endif
 
 common.o: common.h
 	echo $(PLATFORM_OS)
-	clang -o $@ -c common.c $(CFLAGS)
+	afl-cc -o $@ -c common.c $(CFLAGS)
 
 imgify.o: imgify.h
-	clang -o $@ -c imgify.c $(CFLAGS)
+	afl-cc -o $@ -c imgify.c $(CFLAGS)
 
 bin2png: common.o imgify.o
-	clang -o $@ bin2png.c $^ $(CFLAGS) $(LDFLAGS)
+	afl-cc -o $@ bin2png.c $^ $(CFLAGS) $(LDFLAGS)
 
 png2bin: common.o imgify.o
-	clang -o $@ png2bin.c $^ $(CFLAGS) $(LDFLAGS)
+	afl-cc -o $@ png2bin.c $^ $(CFLAGS) $(LDFLAGS)
