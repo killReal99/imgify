@@ -6,7 +6,6 @@ all: bin2png png2bin
 clean:
 	@rm -rf *.o bin2png png2bin
 
-CC = clang
 CFLAGS += -D_XOPEN_SOURCE=600 -std=c99 -Wall -Wextra
 LDFLAGS += -lpng
 
@@ -16,13 +15,13 @@ endif
 
 common.o: common.h
 	echo $(PLATFORM_OS)
-	$(CC) -o $@ -c common.c $(CFLAGS)
+	clang -o $@ -c common.c $(CFLAGS)
 
 imgify.o: imgify.h
-	$(CC) -o $@ -c imgify.c $(CFLAGS)
+	clang -o $@ -c imgify.c $(CFLAGS)
 
 bin2png: common.o imgify.o
-	$(CC) -o $@ bin2png.c $^ $(CFLAGS) $(LDFLAGS)
+	clang -o $@ bin2png.c $^ $(CFLAGS) $(LDFLAGS)
 
 png2bin: common.o imgify.o
-	$(CC) -o $@ png2bin.c $^ $(CFLAGS) $(LDFLAGS)
+	clang -o $@ png2bin.c $^ $(CFLAGS) $(LDFLAGS)
