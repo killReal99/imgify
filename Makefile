@@ -6,7 +6,7 @@ all: bin2png png2bin
 clean:
 	@rm -rf *.o bin2png png2bin
 
-CFLAGS += -D_XOPEN_SOURCE=600 -std=c99 -Wall -Wextra
+CFLAGS += -D_XOPEN_SOURCE=600 -std=c99 -Wall -Wextra --coverage
 LDFLAGS += -lpng
 
 ifeq ($(PLATFORM_OS), Linux)
